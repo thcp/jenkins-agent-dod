@@ -4,10 +4,8 @@ set -e
 agent_runner() {
     while :
     do
-        if [ -f "/proc/$(cat /tmp/agent.pid)/status" ]
+        if [ ! -f "/proc/$(cat /tmp/agent.pid)/status" ]
         then
-            :
-        else
             curl $JNLP_AGENT_DOWNLOAD_URL -o agent.jar
             java \
             -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL=300 \
@@ -17,6 +15,8 @@ agent_runner() {
             -secret $JENKINS_SECRET \
             -workDir "$JENKINS_WORKDIR" &
             echo $! > /tmp/agent.pid
+        else
+            :
         fi
         sleep 10
     done
