@@ -1,6 +1,5 @@
 FROM openjdk:slim
-
-
+MAINTAINER Thales Pereira
 
 ## Install dependencies
 COPY apt-requirements.txt /tmp/apt-requirements.txt
@@ -11,6 +10,7 @@ RUN apt-get -qq update \
 	pip3 install pipenv && \
 	pip3 install --upgrade pip
 
+## Install Docker
 ENV DOCKER_CHANNEL stable
 ENV DOCKER_VERSION 18.06.1-ce
 
@@ -20,7 +20,7 @@ RUN set -ex; \
 	dockerd -v && \
 	docker -v
 
-
+## Copy Files
 COPY modprobe.sh /usr/local/bin/modprobe
 COPY docker-entrypoint.sh /usr/local/bin/
 COPY worker.sh /usr/local/bin/
