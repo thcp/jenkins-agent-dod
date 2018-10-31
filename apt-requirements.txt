@@ -1,0 +1,6 @@
+ca-certificates
+git
+curl
+rsync
+openssh-client
+python3 python3-pip
