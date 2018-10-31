@@ -9,7 +9,7 @@ Lack of python 3 support is the main reason.
 
 #### What about the restarting process?
 
-Agents goes offline after restarting Jenkins Master, and currently it's not doable to relaunch 20+ containers.
+Agents goes offline after restarting Jenkins Master, and currently it's not doable to relaunch 20+ containers manually.
 
 #### How it works
 
