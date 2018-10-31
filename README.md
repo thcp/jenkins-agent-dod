@@ -1,6 +1,23 @@
 # jenkins-slave-dod
 Jenkins Slave with docker out of docker and auto restart
 
+#### How to use:
+
+##### Update `config.env`:
+
+```
+AGENT_NAME=<agent name>
+JENKINS_URL=<jenkins master url>
+TARGET=<server ip/port> 
+JENKINS_SECRET=<token>
+JNLP_AGENT_URL="$JENKINS_URL/computer/$AGENT_NAME/slave-agent.jnlp"
+JNLP_AGENT_DOWNLOAD_URL="$JENKINS_URL/jnlpJars/agent.jar"
+JENKINS_WORKDIR="/var/lib/jenkins/"
+```
+It's important to notice that `TARGET` it's a bad variable name , i'm opened for sugestions and it  will be used for  checking if Jenkins Master is up or not. 
+
+##### Just run it:
+Execute `run.sh` and that's it.
 
 #### Why not using supervisor ?
 
