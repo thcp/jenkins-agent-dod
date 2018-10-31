@@ -4,8 +4,11 @@ set -e
 
 source config.env
 
+
+DOCKER_IMAGE="jenkins-agent-$AGENT_NAME"
+
 echo "Build Image"
-docker build -t jenkins-slave .
+docker build -t $DOCKER_IMAGE .
 
 echo "Launch agent"
 docker run -d  \
@@ -16,5 +19,5 @@ docker run -d  \
 	-e JENKINS_WORKDIR=$JENKINS_WORKDIR \
 	-v /var/run/docker.sock:/var/run/docker.sock \
 	-v $JENKINS_WORKDIR:$JENKINS_WORKDIR \
-	--name=jenkins-slave \
-	jenkins-slave
+	--name="$DOCKER_IMAGE" \
+	"$DOCKER_IMAGE"
