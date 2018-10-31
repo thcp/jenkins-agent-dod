@@ -13,7 +13,7 @@ echo "Build Image"
 docker build -t $DOCKER_IMAGE .
 
 echo "Launch agent"
-docker run --restart on-failure  \
+docker run -d --restart on-failure  \
 	-e JNLP_AGENT_URL=$JNLP_AGENT_URL\
 	-e JENKINS_SECRET=$JENKINS_SECRET \
 	-e TARGET=$TARGET \
