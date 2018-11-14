@@ -1,6 +1,7 @@
 FROM openjdk:slim
 MAINTAINER Thales Pereira
 
+
 ## Install dependencies
 COPY apt-requirements.txt /tmp/apt-requirements.txt
 
