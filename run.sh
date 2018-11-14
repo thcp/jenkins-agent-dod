@@ -7,7 +7,7 @@ source config.env
 
 DOCKER_IMAGE="jenkins-agent-$AGENT_NAME"
 
-docker rm -f $DOCKER_IMAGE
+docker rm -f $DOCKER_IMAGE || true
 
 echo "Build Image"
 docker build -t $DOCKER_IMAGE .
