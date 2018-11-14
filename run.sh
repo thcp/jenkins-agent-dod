@@ -4,7 +4,6 @@ set -e
 
 source config.env
 
-
 DOCKER_IMAGE="jenkins-agent-$AGENT_NAME"
 
 docker rm -f $DOCKER_IMAGE || true
