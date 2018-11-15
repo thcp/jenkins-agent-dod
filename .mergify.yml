@@ -3,5 +3,6 @@ pull_request_rules:
   conditions:
   - status-success=continuous-integration/travis/pr
   actions:
+    delete_head_branch: {}
     merge:
       method: merge
