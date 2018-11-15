@@ -7,6 +7,7 @@ source config.env
 
 DOCKER_IMAGE="jenkins-agent-$AGENT_NAME"
 
+## remove running container and ignore error message if none.
 docker rm -f $DOCKER_IMAGE || true
 
 echo "Build Image"
