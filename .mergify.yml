@@ -2,7 +2,7 @@ pull_request_rules:
 - name: merge pull requestst if CI passes
   conditions:
   - status-success=continuous-integration/travis/pr
-  - base: master
+  - base=master
   actions:
     delete_head_branch: {}
     merge:
