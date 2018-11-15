@@ -6,9 +6,7 @@ COPY apt-requirements.txt /tmp/apt-requirements.txt
 
 RUN apt-get -qq update \
 	&& apt-get -qqy install --no-install-recommends $(cat /tmp/apt-requirements.txt) \
-	&& rm -rf /var/lib/apt/lists/* \
-	pip3 install pipenv && \
-	pip3 install --upgrade pip
+	&& rm -rf /var/lib/apt/lists/*
 
 ## Install Docker
 ENV DOCKER_CHANNEL stable
