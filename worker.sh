@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+echo "Starting agent...."
 curl $JNLP_AGENT_DOWNLOAD_URL -o agent.jar
 java \
     -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL=300 \
