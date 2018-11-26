@@ -1,6 +1,9 @@
 FROM openjdk:slim
 MAINTAINER Thales Pereira
 
+#
+ARG version=${version}
+
 ## Install dependencies
 COPY apt-requirements.txt /tmp/apt-requirements.txt
 
@@ -10,7 +13,7 @@ RUN apt-get -qq update \
 
 ## Install Docker
 ENV DOCKER_CHANNEL stable
-ENV DOCKER_VERSION 18.06.1-ce
+ENV DOCKER_VERSION $version
 
 RUN set -ex; \
 	curl "https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz" \
@@ -27,4 +30,4 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 
 WORKDIR /app
 
-CMD worker.sh
+CMD ["worker.sh"]

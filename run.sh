@@ -5,12 +5,12 @@ set -e
 source config.env
 
 DOCKER_IMAGE="jenkins-agent-$AGENT_NAME"
-
+DOCKER_VERSION=$(docker version --format '{{.Server.Version}}')
 ## remove running container and ignore error message if none.
 docker rm -f $DOCKER_IMAGE || true
 
 echo "Build Image"
-docker build -t $DOCKER_IMAGE .
+docker build --build-arg version=$DOCKER_VERSION -t $DOCKER_IMAGE  .
 
 echo "Launch agent"
 docker run -d --restart on-failure  \
