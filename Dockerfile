@@ -1,5 +1,5 @@
 FROM openjdk:slim
-MAINTAINER Thales Pereira
+LABEL maintener="Thales Pereira"
 
 #
 ARG version=${version}
