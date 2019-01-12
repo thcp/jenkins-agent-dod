@@ -1,9 +1,9 @@
 pull_request_rules:
-- name: merge pull requestst if CI passes
-  conditions:
-  - status-success=continuous-integration/travis-ci/pr
-  - base=master
-  actions:
-    delete_head_branch: {}
-    merge:
-      method: merge
+  - name: automatic merge on CI success and review
+    conditions:
+      - status-success=Travis CI - Pull Request
+      - base=master
+    actions:
+      delete_head_branch: {}
+      merge:
+        method: merge
